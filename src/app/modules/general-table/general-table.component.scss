@@ -1,0 +1,34 @@
+.filter-wrapper {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .content {
+        padding-bottom: 16px;
+        .btn {
+            margin: 16px;
+        }
+    }
+    .checkbox-wrapper {
+        display: flex;
+        h5 {
+            padding-right: 16px;
+        }
+        input {
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
+
+.spinner-border {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 50%;
+}
+
+.filter-text {
+    color: grey;
+    text-decoration: underline;
+}

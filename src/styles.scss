@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+body {
+    background-color: #eee !important;
+}
+
+app-general-table, app-brief-information {
+    .content-wrapper {
+        margin-top: 60px;
+        padding: 16px;
+    }
+}
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

@@ -1,0 +1,25 @@
+<app-navigation></app-navigation>
+<div class="content-wrapper">
+    <div>
+        <h4>Метрики по місяцях</h4>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <ng-container *ngFor="let col of briefTableColumns">
+                    <th scope="col">{{col}}</th>
+                </ng-container>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of briefTableData | async ">
+                <td class="td-value"><span>{{t?.year_month}}</span></td>
+                <td class="td-value"><span>{{t?.loan_sum | currency}}</span></td>
+                <td class="td-value"><span>{{t?.average_loan_sum | currency}}</span></td>
+                <td class="td-value"><span>{{t?.percentage_sum | currency}}</span></td>
+                <td class="td-value"><span>{{t?.loans_amount}}</span></td>
+                <td class="td-value"><span>{{t?.returned_loans}}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

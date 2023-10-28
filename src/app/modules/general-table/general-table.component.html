@@ -1,0 +1,43 @@
+<app-navigation></app-navigation>
+<div class="content-wrapper">
+    <div class="table-responsive">
+        <div class="filter-wrapper">
+            <div class="content">
+                <h5>Фільтр по даті видачі кредиту:</h5>
+                <app-date-picker (dateChanged)="dateChanged($event, 'issuance-date')"></app-date-picker>
+            </div>
+            <div class="content">
+                <h5>Фільтр по даті повернення кредиту:</h5>
+                <app-date-picker (dateChanged)="dateChanged($event, 'return-date')"></app-date-picker>
+            </div>
+            <div class="checkbox-wrapper">
+                <h5>Відображати тільки просрочені кредити:</h5>
+                <input type="checkbox" [checked]="false" (change)="checkboxValueChanged($event)">
+            </div>
+        </div>
+        <div class="filter-text" *ngIf="type">
+            <h6 *ngIf="(tableData | async)?.length">Таблиця враховує фільтрування по даті {{type === 'issuance-date' ? 'видачі': 'повернення'}} кредиту:</h6>
+            <h6 *ngIf="!(tableData | async)?.length">Даних не знайдено</h6>
+        </div>
+        <table class="table table-bordered table-striped table-hover" *ngIf="(tableData | async)?.length">
+            <caption>Список Користувачів</caption>
+            <thead>
+                <tr>
+                    <ng-container *ngFor="let col of tableColumns">
+                        <th scope="col">{{col}}</th>
+                    </ng-container>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let t of tableData | async">
+                    <td class="td-value"><span>{{t?.id}}</span></td>
+                    <td class="td-value"><span>{{t?.issuance_date}}</span></td>
+                    <td class="td-value"><span>{{t?.return_date}}</span></td>
+                    <td class="td-value"><span>{{t?.actual_return_date}}</span></td>
+                    <td class="td-value"><span>{{t?.body | currency}}</span></td>
+                    <td class="td-value"><span>{{t?.percent | currency}}</span></td>
+                    <td class="td-value"><span>{{t?.user}}</span></td>
+                </tr>
+        </table>
+    </div>
+</div>
